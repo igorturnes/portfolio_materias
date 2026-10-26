@@ -1,0 +1,59 @@
+
+GET http://localhost:3000/pokedex
+
+###
+
+POST http://localhost:3000/pokedex
+Content-Type: application/json
+
+{
+    "nome": "charizard",
+    "genero": "F",
+    "tipo": "Fogo/voador"
+}
+
+###
+
+GET http://localhost:3000/materias
+
+###
+
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{
+    "nome": "Programação Web",
+    "professor": "Marcos",
+    "cargaHoraria": 80,
+    "nota": 9.5,
+    "aprendizado": "Criei minha primeira API com Express",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original"
+}
+
+###
+
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{
+    "nome": "Banco de Dados",
+    "professor": "Joana",
+    "cargaHoraria": 80,
+    "nota": 8.5,
+    "aprendizado": "Aprendi a criar tabelas e consultar dados com SQL",
+    "imagem": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pgadmin.svg"
+}
+
+###
+
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{
+    "nome": "Desenvolvimento de Sistemas",
+    "professor": "Carlos",
+    "cargaHoraria": 80,
+    "nota": 9,
+    "aprendizado": "Aprendi a desenvolver aplicações",
+    "imagem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/3840px-Visual_Studio_Code_1.35_icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+}

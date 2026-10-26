@@ -1,0 +1,71 @@
+<h1>Meu Portfólio</h1>
+
+<h2>Cadastrar matéria</h2>
+
+<input type="text" id="nome" placeholder="Nome da matéria">
+<input type="text" id="professor" placeholder="Professor">
+<input type="number" id="cargaHoraria" placeholder="Carga horária">
+<input type="number" id="nota" placeholder="Nota">
+<input type="text" id="aprendizado" placeholder="O que aprendi">
+<input type="text" id="imagem" placeholder="Link da imagem">
+
+<button onclick="cadastrar()">Cadastrar</button>
+<button onclick="buscar()">Buscar matérias</button>
+
+<h2>Matérias cadastradas</h2>
+
+ <div id="lista"></div>
+
+<script>
+    async function cadastrar() {
+        const nome = document.getElementById('nome').value
+        const professor = document.getElementById('professor').value
+        const cargaHoraria = Number(document.getElementById('cargaHoraria').value)
+        const nota = Number(document.getElementById('nota').value)
+        const aprendizado = document.getElementById('aprendizado').value
+        const imagem = document.getElementById('imagem').value
+
+    const materia = {
+        nome: nome,
+        professor: professor,
+        cargaHoraria: cargaHoraria,
+        nota: nota,
+        aprendizado: aprendizado,
+        imagem: imagem
+            }
+
+    await fetch('http://localhost:3000/materias', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+},
+body: JSON.stringify(materia)
+            })
+
+buscar()
+        }
+
+    async function buscar() {
+        const resposta = await fetch('http://localhost:3000/materias')
+        const materias = await resposta.json()
+
+        document.getElementById('lista').innerHTML = ''
+
+        materias.forEach(materia => {
+        document.getElementById('lista').innerHTML += `
+            <div>
+            <img src="${materia.imagem}" width="150">
+            <h3>${materia.nome}</h3>
+            <p>Professor: ${materia.professor}</p>
+            <p>Carga horária: ${materia.cargaHoraria} horas</p>
+            <p>Nota: ${materia.nota}</p>
+            <p>Aprendizado: ${materia.aprendizado}</p>
+            </div>
+            <hr>
+                `
+            })
+        }
+</script>
+
+</body>
+</html>
